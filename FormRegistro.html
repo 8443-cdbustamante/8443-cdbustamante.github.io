@@ -10,16 +10,16 @@
        <fieldset> <!--agrupa varios elementos del form-->
          <legend>DIRECCION DE ENVIO</legend>
          Calle Principal <br>
-         <input type="text" name="txtPrincipal" value="">
+         <input type="text" name="txtPrincipal" value="" onchange="ActivarB()">
          <br><br>
          Transversal<br>
          <input type="text" name="txtTransversal" value="">
         
 		<br><br>
-		<!--<input type="checkbox" name="chbEntrega1" value="PROPIETARIO"checked> Entrega al propietario.<br>
-        <input type="checkbox" name="chbEntrega2" value="TERCERO"> Entrega a un tercero.-->
-        <input type="radio" id="entrega" name="rbEntrega2" value="PROPIETARIO" checked>Propietario<br>
-        <input type="radio" id="entrega" name="rbEntrega2" value="TERCERO">Tercero
+		    <input type="checkbox" name="chbEntrega1" value="PROPIETARIO"checked> Entrega al propietario.<br>
+        <input type="checkbox" name="chbEntrega2" value="TERCERO"> Entrega a un tercero.
+        <!--<input type="radio" id="entrega" name="rbEntrega2" value="PROPIETARIO" checked>Propietario<br>
+        <input type="radio" id="entrega" name="rbEntrega2" value="TERCERO">Tercero-->
 
          <br><br>
          Cantones: <select  name="cmbCantones">
@@ -38,7 +38,7 @@
          </select>
 		 
          <br><br>
-           <input type="submit" name="SubmitDireccion" value="REGISTRAR">
+           <input type="submit" name="SubmitDireccion" value="ENVIAR DATOS">
        </fieldset>
     </form>
 	
@@ -54,11 +54,29 @@
          Referencia de la Dirección:<br>
          <textarea name="Mensaje" rows="3" cols="30" id="Mensaje"></textarea><br>
          <br>
-           <input type="submit" name="SubmitConfidencial" value="PROCESAR">
+           <input type="submit" name="SubmitConfidencial" value="GUARDAR">
        </fieldset>
     </form>
     <br><br>
     <a href="index.html">Regresar</a>
     
+    <!-- Modificación PARTE 1-->
+     <script type="text/javascript">
+            objeto = document.getElementsByTagName('SubmitDireccion');
+            function ActivarB{
+                check = document.getElementsByTagName('chbEntrega1');
+
+                if(check.cheked == true){
+                  objeto.disabled = false; 
+                else{
+                  objeto.disabled = true;
+                }
+            } 
+
+            function ActivarF{
+
+            }     
+       </script>
+
   </body>
 </html>
