@@ -62,10 +62,10 @@
     
     <!-- Modificación PARTE 1-->
      <script type="text/javascript">
-            objeto = document.getElementsById('Submitb');
+            var objeto = document.getElementsById('Submitb');
             function ActivarB{
-                check = document.getElementsById('Entrega1');
-                if(check.cheked == true){
+                var check = document.getElementsById('Entrega1');
+                if(check.checked == true){
                   objeto.disabled = false; 
                 else{
                   objeto.disabled = true;
