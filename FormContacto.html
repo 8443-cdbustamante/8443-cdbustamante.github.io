@@ -19,11 +19,13 @@
       <input type="submit" name="BtnEnviar" id="Enviar1" value="Enviar" onclick="desactivar()">
     </form>
     <script type="text/javascript">
-      var valor,estado = true , expresion, cadena ="", contador=0;
-
+      
+      var valor, cadena ="", contador=0, estado=true;
+      const form = document.getElementById("FormContacto");
+      
       function validar(){
-
-        expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+        
+        const expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
         valor = document.getElementById("email1").value;
         if (!expresion.test(valor)){
             estado = false;
@@ -44,16 +46,95 @@
 
         if(!estado){
           alert("Error validación - corrija "+cadena);
-        }
-
-        function desactivar(){
-          valor= document.getElementById("Enviar1");
-          valor.type = "button";
-          valor.disabled = true;
-          valor.value = "Enviando Datos ......"
-          valor.onchange = "this.form.submit()";
+          //return false;
+        }else{
+         estado = true;
+         contador++;
+         valor= document.getElementById("Enviar1");
+            valor.type = "button";
+            valor.click();
+            
         }
       }
+
+      function delay(n){
+          return new Promise(function(resolve){
+              setTimeout(resolve,n*1000);
+          });
+      }
+
+      async function desactivar(){
+
+          if(estado == true && contador!=0){
+            
+            valor= document.getElementById("Enviar1");
+            valor.type = "button";
+            valor.disabled = true;
+            valor.value = "Enviando Datos ......"
+            await delay(7);
+            valor.form.submit();
+          }
+      }
+
+/*
+       const form = document.getElementById("FormContacto");
+const expresion = {
+  email:  /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i, // Correo Electronico.
+  Telef: /^\d{10}$/
+  
+}
+
+function emailValido() {
+  var valor = document.getElementById("email1").value;
+  var vlce = false;
+  if (!expresion.email.test(valor)){
+    alert('Direccion de Correo No valida...!!!');
+    vlce = false;
+  }
+  else{
+    console.log("Direccion de Correo Correcta");
+    vlce = true;
+  }
+  return vlce;
+}
+
+function telefonoValido(){
+  var valor = document.getElementById("tel1").value;
+  var vltl = false;
+  if(valor.length == 10 && !isNaN(valor)){
+    vltl = true;
+  }else{
+    alert('El Numero de telefono ingresado es Incorrecto');
+  }
+  return vltl;
+}
+
+function delay(n){
+    return new Promise(function(resolve){
+        setTimeout(resolve,n*1000);
+    });
+}
+
+function validar(){
+  if(emailValido() && telefonoValido()){
+    alert("Los datos ingresados son Correctos");
+    return true;
+  }else{
+    return false;
+  }
+}
+
+async function desactivar(){
+  if(validar() == true){
+    var btn = document.getElementById('Enviar1');
+    btn.disabled = true;
+    btn.value = 'Enviando datos ..........';
+    btn.form.submit();
+    await delay(2);
+  }
+
+} */
+        
     </script>
   </body>
 </html>
