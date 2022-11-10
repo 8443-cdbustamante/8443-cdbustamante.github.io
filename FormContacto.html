@@ -24,7 +24,7 @@
       const form = document.getElementById("FormContacto");
       
       function validar(){
-        
+        estado=true;
         const expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
         valor = document.getElementById("email1").value;
         if (!expresion.test(valor)){
